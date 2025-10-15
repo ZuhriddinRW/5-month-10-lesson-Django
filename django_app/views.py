@@ -12,15 +12,21 @@ def index(request) :
     return render ( request, 'index.html', context )
 
 
-def categories_bootstrap(request) :
-    categories = Category.objects.all ()
-    return render ( request, 'categories_bootstrap.html', {'categories' : categories} )
+def categories(request):
+    categories = Category.objects.all()
+    return render( request, 'categories.html', { 'categories': categories } )
+
+
+def categories_with_id(request, category_id) :
+    categories = Category.objects.filter (category_id=category_id)
+    return render ( request, 'categories.html', {'categories' : categories} )
 
 
 def products_bootstrap(request):
     products = Product.objects.all ()
-    return render ( request, 'products_bootstrap.html', { 'products': products } )
+    return render ( request, 'products.html', { 'products': products } )
+
 
 def suppliers_bootstrap(request):
     suppliers = Supplier.objects.all()
-    return render ( request, 'suppliers_bootstrap.html', { 'suppliers': suppliers } )
+    return render ( request, 'suppliers.html', { 'suppliers': suppliers } )
